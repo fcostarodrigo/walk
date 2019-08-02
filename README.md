@@ -1,5 +1,6 @@
 # WALK
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/57550a6a14ac4915a5502e0277654c0f)](https://app.codacy.com/app/fcostarodrigo/walk?utm_source=github.com&utm_medium=referral&utm_content=fcostarodrigo/walk&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/fcostarodrigo/walk.svg?branch=master)](https://travis-ci.org/fcostarodrigo/walk)
 [![codecov](https://codecov.io/gh/fcostarodrigo/walk/branch/master/graph/badge.svg)](https://codecov.io/gh/fcostarodrigo/walk)
 

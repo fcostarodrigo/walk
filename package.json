@@ -26,6 +26,9 @@
     "url": "https://github.com/fcostarodrigo/rfc-walk/issues"
   },
   "homepage": "https://github.com/fcostarodrigo/rfc-walk#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^13.2.0",

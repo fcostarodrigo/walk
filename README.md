@@ -1,4 +1,4 @@
-# RFC-WALK
+# WALK
 
 [![Build Status](https://travis-ci.org/fcostarodrigo/walk.svg?branch=master)](https://travis-ci.org/fcostarodrigo/walk)
 [![codecov](https://codecov.io/gh/fcostarodrigo/walk/branch/master/graph/badge.svg)](https://codecov.io/gh/fcostarodrigo/walk)

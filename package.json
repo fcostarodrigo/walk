@@ -1,6 +1,6 @@
 {
   "name": "@fcostarodrigo/walk",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Transverse files recursively",
   "main": "src/index.js",
   "scripts": {
@@ -26,6 +26,9 @@
     "url": "https://github.com/fcostarodrigo/rfc-walk/issues"
   },
   "homepage": "https://github.com/fcostarodrigo/rfc-walk#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^13.2.0",

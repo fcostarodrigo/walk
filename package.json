@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fcostarodrigo/rfc-walk.git"
+    "url": "git+https://github.com/fcostarodrigo/walk.git"
   },
   "keywords": [
     "transverse",
@@ -23,9 +23,9 @@
   "author": "Rodrigo Fernandes da Costa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fcostarodrigo/rfc-walk/issues"
+    "url": "https://github.com/fcostarodrigo/walk/issues"
   },
-  "homepage": "https://github.com/fcostarodrigo/rfc-walk#readme",
+  "homepage": "https://github.com/fcostarodrigo/walk#readme",
   "publishConfig": {
     "access": "public"
   },

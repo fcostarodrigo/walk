@@ -1,4 +1,4 @@
-# WALK
+# Walk
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/57550a6a14ac4915a5502e0277654c0f)](https://app.codacy.com/app/fcostarodrigo/walk?utm_source=github.com&utm_medium=referral&utm_content=fcostarodrigo/walk&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/fcostarodrigo/walk.svg?branch=master)](https://travis-ci.org/fcostarodrigo/walk)
@@ -28,32 +28,19 @@ main();
 
 ## Documentation
 
-```typescript
-function walk(
-  root?: string,
-  includeFolders?: boolean,
-): AsyncIterableIterator<string>;
+```javascript
+walk(root, lisFolders, walkFolder, readdir);
 ```
 
-`root`: Path to where the search starts. Defaults to `.`.
+`root`: Optional folder to transverse. Defaults to `.`.
 
-`includeFolders`: If paths of folders should be returned. Defaults to `false`.
+`includeFolders`: Optional flag to list folders. Defaults to `false`.
+
+`walkFolder`: Optional callback to decide if a folder is going to be transversed.
+
+`readdir`: Optional node function override.
 
 The function is an async generator that yields the paths of the files recursively.
-
-## Development
-
-Full tests with coverage
-
-```bash
-npm test
-```
-
-Unit tests and watch for changes
-
-```bash
-npm run unit-test
-```
 
 ## License
 

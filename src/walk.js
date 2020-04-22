@@ -5,19 +5,28 @@ const path = require("path");
  * Transverse files recursively
  *
  * @param {string} root
- * @param {boolean} includeFolders
+ * @param {boolean} listFolders
+ * @param {(folderPath: string) => boolean} walkFolder
+ * @param {typeof fs.promises.readdir} readdir
  * @returns {AsyncIterableIterator<string>}
  */
-async function* walk(root = ".", includeFolders = false) {
+async function* walk(
+  root = ".",
+  listFolders = false,
+  walkFolder = () => true,
+  readdir = fs.promises.readdir,
+) {
   try {
-    const files = await fs.promises.readdir(root);
+    const files = await readdir(root);
 
-    if (includeFolders) {
+    if (listFolders) {
       yield root;
     }
 
-    for (const file of files) {
-      yield* walk(path.join(root, file), includeFolders);
+    if (walkFolder(root)) {
+      for (const file of files) {
+        yield* walk(path.join(root, file), listFolders, walkFolder, readdir);
+      }
     }
   } catch (error) {
     if (error.code === "ENOTDIR") {

@@ -40,6 +40,8 @@ walk(root, lisFolders, walkFolder);
 
 The function is an async generator that yields the paths of the files recursively.
 
+[Changelog](CHANGELOG.md)
+
 ## License
 
 [MIT License](http://www.opensource.org/licenses/mit-license.php)

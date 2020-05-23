@@ -7,17 +7,11 @@ const path = require("path");
  * @param {string} root
  * @param {boolean} listFolders
  * @param {(folderPath: string) => boolean} walkFolder
- * @param {typeof fs.promises.readdir} readdir
  * @returns {AsyncIterableIterator<string>}
  */
-async function* walk(
-  root = ".",
-  listFolders = false,
-  walkFolder = () => true,
-  readdir = fs.promises.readdir,
-) {
+async function* walk(root = ".", listFolders = false, walkFolder = () => true) {
   try {
-    const files = await readdir(root);
+    const files = await fs.promises.readdir(root);
 
     if (listFolders) {
       yield root;
@@ -25,7 +19,7 @@ async function* walk(
 
     if (walkFolder(root)) {
       for (const file of files) {
-        yield* walk(path.join(root, file), listFolders, walkFolder, readdir);
+        yield* walk(path.join(root, file), listFolders, walkFolder);
       }
     }
   } catch (error) {

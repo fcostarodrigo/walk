@@ -29,7 +29,7 @@ main();
 ## Documentation
 
 ```javascript
-walk(root, lisFolders, walkFolder, readdir);
+walk(root, lisFolders, walkFolder);
 ```
 
 `root`: Optional folder to transverse. Defaults to `.`.
@@ -37,8 +37,6 @@ walk(root, lisFolders, walkFolder, readdir);
 `includeFolders`: Optional flag to list folders. Defaults to `false`.
 
 `walkFolder`: Optional callback to decide if a folder is going to be transversed.
-
-`readdir`: Optional node function override.
 
 The function is an async generator that yields the paths of the files recursively.
 

@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs").promises;
 const path = require("path");
 
 /**
@@ -11,7 +11,7 @@ const path = require("path");
  */
 async function* walk(root = ".", listFolders = false, walkFolder = () => true) {
   try {
-    const files = await fs.promises.readdir(root);
+    const files = await fs.readdir(root);
 
     if (listFolders) {
       yield root;

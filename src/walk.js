@@ -1,17 +1,9 @@
-const fs = require("fs").promises;
-const path = require("path");
+import fs from "node:fs";
+import path from "node:path";
 
-/**
- * Transverse files recursively
- *
- * @param {string} root
- * @param {boolean} listFolders
- * @param {(folderPath: string) => boolean} walkFolder
- * @returns {AsyncIterableIterator<string>}
- */
-async function* walk(root = ".", listFolders = false, walkFolder = () => true) {
+export async function* walk(root = ".", listFolders = false, walkFolder = () => true) {
   try {
-    const files = await fs.readdir(root);
+    const files = await fs.promises.readdir(root);
 
     if (listFolders) {
       yield root;
@@ -30,5 +22,3 @@ async function* walk(root = ".", listFolders = false, walkFolder = () => true) {
     }
   }
 }
-
-module.exports = walk;

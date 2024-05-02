@@ -4,10 +4,10 @@
   "description": "Transverse files recursively",
   "main": "src/walk.js",
   "scripts": {
-    "test": "jest unit int --coverage",
-    "pretest": "eslint src",
-    "format": "prettier --write ."
+    "test": "xo --fix src && vitest run",
+    "prepare": "husky"
   },
+  "types": "src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fcostarodrigo/walk.git"
@@ -28,62 +28,19 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.2",
-    "eslint": "^7.12.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-prettier": "^6.14.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-tsc": "^2.0.0",
-    "husky": "^4.3.0",
-    "jest": "^26.6.1",
-    "lint-staged": "^10.4.2",
-    "prettier": "^2.1.2",
-    "typescript": "^4.0.3"
+    "@types/node": "^20.12.8",
+    "husky": "^9.0.11",
+    "vitest": "^1.5.3",
+    "xo": "^0.58.0"
   },
-  "eslintConfig": {
-    "extends": [
-      "airbnb-base",
-      "plugin:jest/recommended",
-      "prettier"
-    ],
-    "plugins": [
-      "prettier",
-      "jest",
-      "tsc"
-    ],
-    "rules": {
-      "no-continue": "off",
-      "no-await-in-loop": "off",
-      "no-restricted-syntax": "off",
-      "prettier/prettier": "error",
-      "tsc/config": [
-        "error",
-        {
-          "configFile": "tsconfig.json"
-        }
-      ]
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{yaml,yml,json,md}": [
-      "prettier --write"
-    ],
-    "*.{js,jsx,mjs}": [
-      "eslint src --fix",
-      "jest --findRelatedTests"
-    ]
+  "xo": {
+    "prettier": true
   },
   "prettier": {
-    "trailingComma": "all"
+    "singleQuote": false,
+    "bracketSpacing": true,
+    "trailingComma": "all",
+    "printWidth": 100
   }
 }

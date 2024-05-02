@@ -1,21 +1,25 @@
-const path = require("path");
-const walk = require("./walk");
+import { join } from "node:path";
+import process from "node:process";
+import { fileURLToPath } from "node:url";
+import { describe, beforeAll, it, expect } from "vitest";
+import { walk } from "./walk.js";
 
 describe("walk", () => {
   beforeAll(() => {
-    process.chdir(path.join(__dirname, "test"));
+    process.chdir(join(fileURLToPath(import.meta.url), "..", "test"));
   });
 
   it("should list files recursively", async () => {
     const files = [];
+
     for await (const file of walk()) {
       files.push(file);
     }
 
     const expectedFiles = [
-      path.join("foods", "egg"),
-      path.join("foods", "pizza"),
-      path.join("foods", "fruits", "banana"),
+      join("foods", "egg"),
+      join("foods", "pizza"),
+      join("foods", "fruits", "banana"),
     ].sort();
 
     expect(files.sort()).toEqual(expectedFiles);
@@ -29,35 +33,31 @@ describe("walk", () => {
 
     const expectedFiles = [
       ".",
-      path.join("foods"),
-      path.join("foods", "egg"),
-      path.join("foods", "pizza"),
-      path.join("foods", "fruits"),
-      path.join("foods", "fruits", "banana"),
+      join("foods"),
+      join("foods", "egg"),
+      join("foods", "pizza"),
+      join("foods", "fruits"),
+      join("foods", "fruits", "banana"),
     ].sort();
 
     expect(files.sort()).toEqual(expectedFiles);
   });
 
   it("should not transverse some folders", async () => {
-    const walkFolder = (folderPath) =>
-      folderPath !== path.join("foods", "fruits");
+    const walkFolder = (folderPath) => folderPath !== join("foods", "fruits");
 
     const files = [];
     for await (const file of walk(undefined, undefined, walkFolder)) {
       files.push(file);
     }
 
-    const expectedFiles = [
-      path.join("foods", "egg"),
-      path.join("foods", "pizza"),
-    ].sort();
+    const expectedFiles = [join("foods", "egg"), join("foods", "pizza")].sort();
 
     expect(files.sort()).toEqual(expectedFiles);
   });
 
   it("should yield the first argument when it is a file", async () => {
-    const filePath = path.join("foods", "egg");
+    const filePath = join("foods", "egg");
 
     const files = [];
     for await (const file of walk(filePath, true)) {

@@ -1,16 +1,17 @@
-/** @typedef {{promises: { readdir: jest.Mock}}} MockedFs */
+import fs from "node:fs";
+import { vi, describe, it, expect } from "vitest";
+import { walk } from "./walk.js";
 
-const fs = require("fs").promises;
-const walk = require("./walk");
+vi.mock("node:fs", () => ({ default: { promises: { readdir: vi.fn() } } }));
 
-const mockReaddir = /** @type {jest.MockedFunction<typeof fs.readdir>} */ (fs.readdir);
-
-jest.mock("fs", () => ({ promises: { readdir: jest.fn() } }));
+const fsMock = vi.mocked(fs);
 
 describe("walk", () => {
   it("should throw errors thrown by the file system", () => {
-    const error = new Error();
-    mockReaddir.mockRejectedValueOnce(error);
+    const error = new Error("Error");
+
+    fsMock.promises.readdir.mockRejectedValueOnce(error);
+
     return expect(walk().next()).rejects.toBe(error);
   });
 });
